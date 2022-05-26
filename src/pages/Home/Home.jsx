@@ -15,7 +15,7 @@ export const Home = () => {
           <h2>{ each }</h2>
         ))}
       </div>
-      <h2>Ao trabalho!</h2>
+      <h2>Ao trabalho jovem!</h2>
     </div>
   )
 }
