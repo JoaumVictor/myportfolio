@@ -1,21 +1,21 @@
-.home-page {
+@mixin fastDisplay ($x, $y, $z) {
   display: flex;
-  background-color: rgb(135, 161, 135);
   align-items: center;
-  justify-content: center;
-  flex-flow: column nowrap;
+  justify-content: $x;
+  flex-flow: $y $z;
+}
+
+$dark: rgb(15, 15, 15);
+
+
+.home-page {
+  @include fastDisplay(space-evenly, column, nowrap);
+  background-color: $dark;
+  position: relative;
   height: 100vh;
-  width: 100vw;
+  width: 99vw;
 
-  img {
-    border-radius: 50%;
-    margin: 15px 0px;
-  }
-
-  .dependencies {
-    border: 2px solid black;
-    border-radius: 16px;
-    padding: 10px;
-    margin: 25px 0px;
+  h1 {
+    color: white;
   }
 }

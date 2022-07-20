@@ -1,0 +1,57 @@
+@mixin fastDisplay ($x, $y, $z) {
+  display: flex;
+  align-items: center;
+  justify-content: $x;
+  flex-flow: $y $z;
+}
+
+$verde: rgb(42, 134, 42);
+
+@mixin sublinhado($x) {
+  &:hover {
+    transform: translateY(-2px);
+    &::after {
+      left: 0%;
+      width: 100%;
+    }
+  }
+  &::after {
+    content: '';
+    background-color: $x;
+    position: absolute;
+    transition: 0.5s;
+    top: 100%;
+    left: 50%;
+    height: 2px;
+    width: 0%;
+  }
+}
+
+.aboutMe {
+  @include fastDisplay(space-evenly, row, nowrap);
+  height: 80vh;
+  width: 70%;
+
+  p {
+    font-size: 30px;
+    a {
+      @include sublinhado($verde);
+      position: relative;
+      color: $verde;
+      cursor: pointer;
+      font-weight: 600;
+    }
+  }
+
+  .image-box {
+    border: 2px solid $verde;
+    border-radius: 16px;
+    padding: 5px;
+    height: 300px;
+
+    img {
+      border-radius: 16px;
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,73 @@
+@mixin fastDisplay ($x, $y, $z) {
+  display: flex;
+  align-items: center;
+  justify-content: $x;
+  flex-flow: $y $z;
+}
+
+@mixin glassmorphism() {
+  background: rgba( 14, 14, 14, 0.4 );
+  box-shadow: 0 8px 32px 0 rgba(21, 21, 21, 0.37);
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+}
+
+$dark: rgba(0, 0, 0, 0.6);
+
+header {
+  @include fastDisplay(space-between, row, nowrap);
+  @include glassmorphism();
+  position: fixed;
+  top: 0;
+  background-color: $dark;
+  font-size: 20px;
+  height: 10vh;
+  width: 99%;
+
+  .links {
+    @include fastDisplay(space-evenly, row, nowrap);
+    width: 30%;
+    padding-left: 10%;
+
+    .icon {
+      @include fastDisplay(space-evenly, row, nowrap);
+      border-radius: 8px;
+      transition: 0.3s;
+      font-size: 24px;
+      position: relative;
+      width: 33%;
+      &:hover {
+        font-size: 28px;
+      }
+    }
+  }
+
+  .options {
+    @include fastDisplay(space-evenly, row, nowrap);
+    width: 50%;
+    a {
+      transition: 0.2s;
+      position: relative;
+
+      &:hover {
+        transform: translateY(-2px);
+        &::after {
+          left: 0%;
+          width: 100%;
+        }
+      }
+
+      &::after {
+        content: '';
+        background-color: white;
+        position: absolute;
+        transition: 0.5s;
+        top: 100%;
+        left: 50%;
+        height: 2px;
+        width: 0%;
+      }
+    }
+  }
+}
